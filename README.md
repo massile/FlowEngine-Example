@@ -1,7 +1,11 @@
 An example for the [Flow Engine](http://github.com/massile/FlowEngine)
 ======================================================================
 
-### Graphics:
+## Screenshot:
+
+![](doc/result.gif)
+
+## Graphics:
 
 First, all the assets are loaded in the constructor of the [World](World.h) class:
  - A vertex and fragment shader
@@ -27,7 +31,7 @@ The `Environment` locator requires an `IWorld` and a `Graphics` service:
     
 UI and Input locators are initialised with default services in the IProvider class.
 
-### Components:
+## Components:
 
 Once the provider is initialised, it can register Objects.
 An `Object` is either a light, a camera or a point in 3d space.
@@ -38,11 +42,11 @@ You can tie 4 different kinds of components to an `Object`:
     - a ShaderComponent which shall take care of updating the shader uniforms
     - a GraphicsComponent which shall take care of rendering the Mesh that represents the `Object`
 
-#### Camera input ([Source file](CameraInputComponent.h)):
+### Camera input ([Source file](CameraInputComponent.h)):
 
 Move the mouse to look around.
 Use W, A, S, D to translate the camera.
 
-#### Light input ([Source file](LightInputComponent.h)):
+### Light input ([Source file](LightInputComponent.h)):
 
 Use the arrow keys to move the light
