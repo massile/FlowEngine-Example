@@ -1,7 +1,7 @@
 #pragma once
 
-#include <components/physics/PhysicsComponent.h>
-#include <graphics/Camera.h>
+#include <Engine3D/components/physics/PhysicsComponent.h>
+#include <Engine3D/graphics/Camera.h>
 
 class CameraPhysicsComponent : public PhysicsComponent
 {

@@ -1,12 +1,13 @@
 #pragma once
 
-#include <providers/Provider.h>
+#include <Engine3D/providers/Provider.h>
+#include <Engine3D/services/ui/window/Window.h>
 #include "World.h"
 
 class AppProvider : public Provider
 {
 public:
-    AppProvider() : Provider(new Window("Test", 500, 500)) {}
+    AppProvider() : Provider {}
 
     void record() override {
         Environment::provide(new World(), new Graphics());

@@ -1,9 +1,9 @@
 #pragma once
 
-#include <components/input/InputComponent.h>
-#include <graphics/Camera.h>
-#include <services/input/keyboard/IKeyboard.h>
-#include <services/input/Input.h>
+#include <Engine3D/components/input/InputComponent.h>
+#include <Engine3D/graphics/Camera.h>
+#include <Engine3D/services/input/keyboard/IKeyboard.h>
+#include <Engine3D/services/input/Input.h>
 
 using namespace glm;
 

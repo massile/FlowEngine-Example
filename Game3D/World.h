@@ -1,7 +1,7 @@
 #pragma once
 
-#include <services/environment/world/IWorld.h>
-#include <parse/ObjParser.h>
+#include <Engine3D/services/environment/world/IWorld.h>
+#include <Engine3D/parse/ObjParser.h>
 
 class World : public IWorld
 {

@@ -3,8 +3,8 @@
 #include "CameraPhysicsComponent.h"
 #include "CameraInputComponent.h"
 #include "LightInputComponent.h"
-#include <components/shader/CameraShaderComponent.h>
-#include <components/shader/LightShaderComponent.h>
+#include <Engine3D/components/shader/CameraShaderComponent.h>
+#include <Engine3D/components/shader/LightShaderComponent.h>
 
 int main()
 {

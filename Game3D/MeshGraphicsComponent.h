@@ -1,6 +1,6 @@
 #pragma once
 
-#include <components/graphics/GraphicsComponent.h>
+#include <Engine3D/components/graphics/GraphicsComponent.h>
 
 class MeshGraphicsComponent : public GraphicsComponent
 {
