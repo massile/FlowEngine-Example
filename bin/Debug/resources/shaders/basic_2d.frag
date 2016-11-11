@@ -8,10 +8,12 @@ in DATA
 	vec4 color;
 	vec2 uv;
 	float tid;
+    vec2 maskUv;
 } fs_in;
 
 uniform vec2 light_pos;
-uniform sampler2D textures[32];
+uniform sampler2D textures[31];
+uniform sampler2D maskTexture;
 
 void main()
 {
@@ -20,5 +22,6 @@ void main()
 	if(fs_in.tid > 0) {
 	    texColor = texture(textures[0], fs_in.uv);
 	}
-	color = texColor * intensity;
+	vec4 maskColor = texture(maskTexture, fs_in.maskUv);
+	color = texColor * maskColor * intensity;
 }

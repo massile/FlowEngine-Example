@@ -11,6 +11,7 @@ private:
     Layer* layer;
     Sprite* sprite;
     Shader* shader;
+    glm::vec3 mask;
 public:
     Game() {}
     ~Game() {}

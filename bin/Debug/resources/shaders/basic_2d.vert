@@ -9,12 +9,15 @@ uniform mat4 pr_matrix;
 uniform mat4 vw_matrix = mat4(1.0);
 uniform mat4 ml_matrix = mat4(1.0);
 
+uniform mat4 maskMatrix;
+
 out DATA
 {
 	vec4 position;
 	vec4 color;
 	vec2 uv;
 	float tid;
+	vec2 maskUv;
 } vs_out;
 
 void main()
@@ -24,4 +27,5 @@ void main()
     vs_out.color = color;
     vs_out.tid = tid;
     vs_out.uv= vec2(uv.x, 1-uv.y);
+    vs_out.maskUv = ((maskMatrix * gl_Position).xy + 1)/2;
 }
