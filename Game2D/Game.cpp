@@ -36,9 +36,8 @@ void Game::update()
         sprite->setPosition(position + glm::vec3(speed, 0, 0));
     }
 
-    double x, y;
-    window->getMousePosition(x, y);
-    shader->uniform("light_pos", glm::vec2((float)(x * 32.0f / window->getWidth() - 16.0f), (float)(9.0f - y * 18.0f / window->getHeight())));
+    glm::vec2 pos = window->getMousePosition();
+    shader->uniform("light_pos", glm::vec2(pos.x * 32.0f / window->getWidth() - 16.0f, 9.0f - pos.y * 18.0f / window->getHeight()));
 }
 
 void Game::render()
