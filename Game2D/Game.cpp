@@ -3,15 +3,17 @@
 
 void Game::init()
 {
-    window = createWindow("Test Game", 960, 540);
+    window = createWindow("Test Game", 600, 600*9.0/16.0);
     shader = new Shader("resources/shaders/basic_2d.vert", "resources/shaders/basic_2d.frag");
-    layer = new Layer(new BatchRenderer2D(), shader, glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
+
+    BatchRenderer2D* renderer = new BatchRenderer2D(glm::vec2(window->getWidth(), window->getHeight()));
+    layer = new Layer(renderer, shader, glm::ortho(-16.0f, 16.0f, -9.0f, 9.0f, -1.0f, 1.0f));
     sprite = new Sprite(0.0f, 0.0f, 4, 4, new Texture("diffuse", "resources/textures/brick-diffuse.jpg"));
 
     layer->add(sprite);
 
     Texture::setWrapMode(TextureWrap::CLAMP);
-    mask = new Mask(new Texture("Mask", "resources/textures/rocks-spec.jpg"));
+    mask = new Mask(new Texture("Mask", "resources/textures/rock-diffuse.jpg"));
     layer->setMask(mask);
 }
 
@@ -40,9 +42,17 @@ void Game::update()
         glm::vec3 position = sprite->getPosition();
         sprite->setPosition(position + glm::vec3(speed, 0, 0));
     }
+    if(window->isKeyPressed('Q')) {
+        ((BatchRenderer2D*)layer->getRenderer())->setTarget(BUFFER);
+    }
+    if(window->isKeyPressed('W')) {
+        ((BatchRenderer2D*)layer->getRenderer())->setTarget(SCREEN);
+    }
 
     glm::vec2 pos = window->getMousePosition();
+    shader->enable();
     shader->uniform("light_pos", glm::vec2(pos.x * 32.0f / window->getWidth() - 16.0f, 9.0f - pos.y * 18.0f / window->getHeight()));
+    shader->disable();
 }
 
 void Game::render()
