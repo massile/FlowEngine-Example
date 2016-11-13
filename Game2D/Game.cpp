@@ -3,7 +3,7 @@
 
 void Game::init()
 {
-    window = createWindow("Test Game", 600, 600*9.0/16.0);
+    window = createWindow("Test Game", 1200, 1200*9.0/16.0);
     shader = new Shader("resources/shaders/basic_2d.vert", "resources/shaders/basic_2d.frag");
 
     BatchRenderer2D* renderer = new BatchRenderer2D(glm::vec2(window->getWidth(), window->getHeight()));
@@ -15,6 +15,8 @@ void Game::init()
     Texture::setWrapMode(TextureWrap::CLAMP);
     mask = new Mask(new Texture("Mask", "resources/textures/rock-diffuse.jpg"));
     layer->setMask(mask);
+
+    renderer->addPostEffectPass(new PostEffectPass(new Shader("resources/shaders/postfx.vert", "resources/shaders/postfx.frag")));
 }
 
 void Game::tick()
@@ -41,12 +43,6 @@ void Game::update()
     if (window->isKeyPressed(GLFW_KEY_RIGHT)) {
         glm::vec3 position = sprite->getPosition();
         sprite->setPosition(position + glm::vec3(speed, 0, 0));
-    }
-    if(window->isKeyPressed('Q')) {
-        ((BatchRenderer2D*)layer->getRenderer())->setTarget(BUFFER);
-    }
-    if(window->isKeyPressed('W')) {
-        ((BatchRenderer2D*)layer->getRenderer())->setTarget(SCREEN);
     }
 
     glm::vec2 pos = window->getMousePosition();
